@@ -1,0 +1,771 @@
+ 
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// variable
+    $family-1:"IBM Plex Serif";
+    $family-2:"Nunito Sans";
+    $family-3:"Poppins";
+    $family-4:"Montserrat";
+
+    $color-1:#2A2A2A;
+    $color-2:#C31815;
+
+// mixin include
+@mixin textProperty($color,$font-size,$font-family,$font-weight,$line-height){
+    color:$color;
+    font-size: $font-size;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $line-height;
+}
+@mixin clamp($line){
+    display: -webkit-box ;
+    -webkit-line-clamp: $line ;
+    -webkit-box-orient: vertical ;
+    overflow: hidden ;
+}
+// classes extends
+.flex-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.borderr{
+    border: 1px solid red;
+}
+
+#root{
+    background-color: #F7F4F4;
+}
+
+ nav{
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    .navbar-nav{
+        gap: 65px;
+        .nav-item{
+            a{
+                text-decoration: none;
+                @include textProperty($color:$color-1, $font-size:16px, $font-family:$family-2, $font-weight:600 ,$line-height:21.8px);
+                position: relative;
+                
+                
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: -12px;
+                    transform: translateY(-50%);
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background-color: #C31815;
+                    opacity: 0;
+                }
+            }
+            
+
+            .active{
+               &::before{
+                opacity: 1;
+               }
+            }
+        }
+    }
+ }
+
+ .news{
+    background-color: #F1F2F3;
+
+    padding: 40px 0 60px;
+    .row-news{
+        --bs-gutter-x:80px;
+    }
+    .row-left{
+       
+        .row{
+
+            --bs-gutter-x:40px;
+            --bs-gutter-y:30px;
+            .card{
+                box-shadow: 0 2px 14px 0 rgba(42, 42, 42, 0.24) ;
+                img{
+                    width: 100%;
+                    height: 210px;
+                }
+                .container-card{
+                    padding:15px 25px 20px ;
+                    h2{
+                        margin-bottom: 17px;
+                        @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-1, $font-weight:600 ,$line-height:27px);
+                        @include clamp(2)
+        
+                    }
+                    p{
+                        margin-bottom: 30px;
+                        @include textProperty($color:$color-1, $font-size:15px, $font-family:$family-2, $font-weight:400 ,$line-height:22px);
+                        @include clamp(3);
+                        height: 106px
+                    }
+                    .info{
+                        @extend .flex-row;
+                        gap:18px;
+                        justify-content: start;
+                        margin-bottom: 41px;
+                        @include textProperty($color:$color-1, $font-size:13px, $font-family:$family-3, $font-weight:400 ,$line-height:21.45px);
+                        .author{
+                            opacity: 70%;
+                        }
+        
+                    }
+                    .reacts{
+                        @extend .flex-row;
+                        gap: 30px;
+                        div{
+                            @extend .flex-row;
+                            gap:7px ;
+                            span{
+                                @include textProperty($color:$color-1, $font-size:10px, $font-family:$family-3, $font-weight:500 ,$line-height:16.5px);
+        
+                            }
+                            img{
+                                width: 18px;
+                                height: 16px;
+                            }
+                        }
+                        img{
+                            width: 18px;
+                            height: 16px;
+                        }
+        
+                    }
+                }
+            }
+        }
+        button{
+            padding: 22px 64px;
+            background-color: transparent;               
+             @include textProperty($color:$color-2, $font-size:14px, $font-family:$family-3, $font-weight:500 ,$line-height:15px);
+             letter-spacing: 1.6px;
+             border: 1px solid $color-2;
+             margin-top: 40px;
+
+        }
+    }
+    .live{
+        .live-icon{
+            margin-bottom: 22px;
+            @extend .flex-row;
+            justify-content: start;
+            gap:14px ;
+            span{
+                @include textProperty($color:$color-2, $font-size:18px, $font-family:$family-3, $font-weight:600 ,$line-height:27px);
+
+            }
+        }
+        .image{
+            width: 100%;
+            height: 218px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+        p{
+            margin-top:12px ;
+            margin-bottom: 45px;
+            @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-1, $font-weight:700 ,$line-height:27px);
+        }
+        .location{
+            @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-3, $font-weight:600 ,$line-height:27px);
+
+
+        }
+        .submit{
+            margin-top: 15px;
+            padding: 30px 20px;
+            background-color: #fff;
+            label{
+                margin-bottom: 16px;
+                @include textProperty($color:#141414, $font-size:14px, $font-family:$family-2, $font-weight:400 ,$line-height:26px);
+
+            }
+            input{
+                border: 1px solid #14141421 ;
+                background-color: transparent;
+                padding:16px 23px ;
+                margin-bottom: 20px;
+                outline: none;
+                width: 100%;
+                @include textProperty($color:#141414, $font-size:14px, $font-family:$family-4, $font-weight:300 ,$line-height:26px);
+                &::placeholder{
+                    @include textProperty($color:#141414, $font-size:14px, $font-family:$family-4, $font-weight:300 ,$line-height:26px);
+
+                }
+
+
+            }
+            button{
+                background-color: #C31815;
+                padding: 12px 20px;
+                @include textProperty($color:#fff, $font-size:15px, $font-family:$family-3, $font-weight:500 ,$line-height:15px);
+                letter-spacing: 1.6px;
+                border: none;
+            }
+
+        }
+    }
+    .tabs{
+        margin-bottom: 8px;
+        @extend .flex-row;
+        justify-content: space-between;
+        padding: 15px;
+        background-color: #fff;
+        .btns{
+            @extend .flex-row;
+            gap:40px ;
+            .btn{
+                padding: 0;
+                position: relative;
+                text-decoration: none;
+                background-color: transparent;
+                border: none;
+                @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-3, $font-weight:600 ,$line-height:27px);
+                &::after{
+                    content: "";
+                    width:40px ;
+                    height: 2px;
+                    background-color: $color-2;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    opacity: 0;
+
+                }
+
+            }
+
+            .active{
+                &::after{
+                    opacity: 1;
+                }
+            }
+
+        }
+
+
+    }
+    .breaking-news{
+        margin-bottom: 40px;
+        background-color:$color-2 ;
+        padding:13px ;
+        @extend .flex-row;
+        gap: 60px;
+        .Link-breaking{
+            text-decoration: none;
+            background-color: #fff;
+            padding:16px ;
+            border: none;
+            @include textProperty($color:$color-2, $font-size:16px, $font-family:$family-3, $font-weight:400 ,$line-height:15px);
+
+        }
+        h4{
+            margin-bottom: 0;
+            @include textProperty($color:#fff, $font-size:20px, $font-family:$family-3, $font-weight:500 ,$line-height:15px);
+
+        }
+    }
+ }
+
+ .editor{
+    background-color: #F1F2F3;
+    padding-bottom: 60px;
+
+    .editor-wrap{
+        @extend .flex-row;
+        margin-bottom: 22px;
+        justify-content: start;
+        gap:14px;
+        .editor-picks{
+            margin-bottom: 0;
+            @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-3, $font-weight:600 ,$line-height:27px);
+    
+        }
+    }
+
+    .slick-dots{
+        display: flex !important;
+        justify-content: center;
+        gap: 17px !important;
+        li{
+            button:before{
+                content: "";
+                width:15px ;
+                height: 4px;
+                background-color: #C31815;
+                opacity: 20%;
+
+            }
+        }
+        .slick-active{
+            button:before{
+                content: "";
+                width:25px ;
+                height: 4px;
+                background-color: #C31815;
+
+            }
+        }
+    }
+
+    .cardSliderHome{
+        margin-right: 32px;
+        @extend .flex-row;
+        align-items: stretch;
+
+        gap:15px;
+        .image{
+            min-width: 272px;
+            height: 170px;
+            
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .description{
+            h2{
+                margin-bottom: 16px;
+                        @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-1, $font-weight:700 ,$line-height:27px);
+                        @include clamp(3)
+            }
+            p{
+                @include textProperty($color:$color-1, $font-size:16px, $font-family:$family-2, $font-weight:400 ,$line-height:26.15px);
+                @include clamp(3)
+            }
+        }
+
+    }
+ }
+
+ .details{
+    .title{
+        background-color:#0E1E32 ;
+        padding: 60px 0 40px;
+        h1{
+            @include textProperty($color:#fff, $font-size:42px, $font-family:$family-1, $font-weight:600 ,$line-height:54.6px);
+        }
+
+    }
+    article{
+        position: relative;
+        background-color: #F7F4F4;
+        z-index: 1;
+
+        
+
+        .row--content{
+            --bs-gutter-x:60px;
+        }
+        
+        .content-main{
+            .imag{
+                width: 100%;
+                height: 423px;
+              
+              
+                &::before{
+                    content: "";
+                    width: 100%;
+                    height:210px;
+                    position: absolute;
+                    background-color: #0E1E32;
+                    z-index: -1;
+                    left: 0;
+                    right: 0;
+                }
+
+                img{
+                 
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .body-content{
+                padding: 40px 0 50px;
+                .content{
+    
+                    
+                    .info{
+                        @extend .flex-row;
+                        gap:18px;
+                        justify-content: start;
+                        margin-bottom: 13px;
+                        @include textProperty($color:$color-1, $font-size:13px, $font-family:$family-3, $font-weight:400 ,$line-height:21.45px);
+                        .author{
+                            opacity: 70%;
+                        }
+        
+                    }
+                    p{
+                        @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-2, $font-weight:400 ,$line-height:27px);
+    
+                    }
+                    .spail-para{
+                        margin: 40px 0px;
+                        padding: 25px 0px;
+                        border-top: 1px solid $color-2;
+                        border-bottom: 1px solid $color-2;
+                        @include textProperty($color:$color-1, $font-size:28px, $font-family:$family-1, $font-weight:400 ,$line-height:42px);
+
+                    }
+    
+                    .sign{
+                        margin: 50px 0;
+                        .card-top{
+                            margin-bottom: 50px;
+                           border-top: 4px solid $color-1;
+                            background-color: #fff;
+                            box-shadow: 0 2px 14px 0 rgba(42, 42, 42, 0.24);
+                            padding: 36px;
+                            h3{
+                                margin-bottom:10px ;
+                                @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-1, $font-weight:600 ,$line-height:27px);
+                            }
+                            h4{
+                                margin-bottom:13px ;
+                                @include textProperty($color:$color-1, $font-size:13px, $font-family:$family-3, $font-weight:400 ,$line-height:21px);
+                                opacity: 70%;
+                            }
+                            p{
+                                margin-bottom:25px ;
+                                @include textProperty($color:$color-1, $font-size:15px, $font-family:$family-2, $font-weight:400 ,$line-height:22px);
+                                .Link{
+                                    @include textProperty($color:$color-1, $font-size:15px, $font-family:$family-2, $font-weight:400 ,$line-height:22px);
+                                }
+                            }
+                            button{
+                                @extend .flex-row;
+                                gap: 15px;
+                                background-color: $color-2;
+                                border: none;
+                                padding:12px 12px 12px 16px ;
+                                @include textProperty($color:#fff, $font-size:14px, $font-family:$family-3, $font-weight:500 ,$line-height:15px);
+                                letter-spacing: 1.6px;
+        
+        
+                            }
+        
+                        }
+                        .card-bottom{
+        
+                            .news{
+                                background-color: transparent;
+                                margin-bottom: 41px;
+                                padding: 0;
+                                @extend .flex-row;
+                                justify-content: start;
+                                gap: 20px;
+                                button{
+                                    background-color:#F6DDDC ;
+                                    border: none;
+                                    border-radius: 10px;
+                                    padding: 8px 21px;
+                                    text-transform: uppercase;
+                                    @include textProperty($color:$color-2, $font-size:11px, $font-family:$family-4, $font-weight:400 ,$line-height:14px);
+                                }
+                            }
+                            .react{
+                                margin-bottom: 31px;
+                                padding-bottom: 26px;
+                                border-bottom: 1px solid rgba(42, 42, 42, 0.1)
+                                ;
+                                @extend .flex-row;
+                                justify-content: space-between;
+                                .left-part{
+                                    @extend .flex-row;
+                                    justify-content: start;
+                                    gap:40px ;
+                                    div{
+                                        @extend .flex-row;
+                                        gap:11px ;
+                                        span{
+                                            @include textProperty($color:$color-1, $font-size:10px, $font-family:$family-3, $font-weight:500 ,$line-height:16.5px);
+        
+                                        }
+                                    }
+                                }
+                                .right-part{
+                                   @extend .flex-row;
+                                   justify-content: end;
+                                   gap:30px ;
+                                   div{
+                                    @extend .flex-row;
+                                    gap:7px ;
+                                    span{
+                                        @include textProperty($color:$color-1, $font-size:10px, $font-family:$family-3, $font-weight:500 ,$line-height:16.5px);
+        
+                                    }
+                                }
+        
+                                }
+                            }
+                            .author-card{
+                                @extend .flex-row;
+                                justify-content: space-between;
+                                align-items: start;
+        
+                                .left-part{
+                                    @extend .flex-row;
+                                    justify-content: start;
+                                    align-items: start;
+                                    gap: 22px;
+                                    .image{
+                                        min-width:80px ;
+                                        min-height: 80px;
+                                        border-radius: 50%;
+                                        overflow: hidden;
+                                        img{
+                                            width: 100%;
+                                            height: 100%;
+                                        }
+                                    }
+                                    .content-dec{
+                                        width: 356px;
+                                        h3{
+                                            margin-bottom: 4px;
+                                            @include textProperty($color:$color-1, $font-size:15px, $font-family:$family-2, $font-weight:700 ,$line-height:22px);
+        
+                                        }
+                                        h2{
+                                            margin-bottom:12px ;
+                                            @include textProperty($color:$color-1, $font-size:20px, $font-family:$family-2, $font-weight:400 ,$line-height:22px);
+        
+                                        }
+                                        p{
+                                            
+                                            @include textProperty($color:$color-1, $font-size:15px, $font-family:$family-2, $font-weight:400 ,$line-height:22px);
+                                            span{
+                                                @include textProperty($color:$color-2, $font-size:15px, $font-family:$family-2, $font-weight:400 ,$line-height:22px);
+        
+                                            }
+                                        }
+                                    }
+                                }
+                                .right-part{
+                                    button{
+                                        @extend .flex-row;
+                                        gap: 16px;
+                                        padding: 12px 22px;
+                                        background-color: transparent;
+                                        border: 1px solid #EFBFBE;
+                                        @include textProperty($color:$color-2, $font-size:14px, $font-family:$family-3, $font-weight:500 ,$line-height:15px);
+                                        letter-spacing: 1.6px;
+        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .row--recom{
+                    --bs-gutter-y:40px;
+                }
+                .recommended{
+                    margin-bottom:9px ;
+                    @include textProperty($color:$color-1, $font-size:16px, $font-family:$family-3, $font-weight:600 ,$line-height:27px);
+
+                }
+                .card-recommended{
+                    background-color: #fff;
+                    .image{
+                        width: 100%;
+                        height: 200px;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                        
+                    }
+                    .para{
+                        padding: 24px 11px 40px 29px;
+
+                        p{
+                            @include textProperty($color:$color-1, $font-size:18px, $font-family:$family-1, $font-weight:700 ,$line-height:27px);
+                            @include clamp(4);
+                            
+        
+        
+                        }
+                    }
+                }
+            }
+        }
+    }
+ }
+ .related-slider{
+    margin-bottom: 50px;
+    background-color: #F7F4F4;
+    .card-related{
+        background-color: #fff;
+        margin-right: 19px;
+        .image{
+            width: 100%;
+            height:200px ;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .dec{
+            padding: 24px 20px 16px 20px;
+            h3{
+                margin-bottom: 38px;
+                @include textProperty($color:#222222, $font-size:16px, $font-family:$family-1, $font-weight:500 ,$line-height:20px);
+                @include clamp(3)
+            }
+            .reacts{
+                @extend .flex-row;
+                gap: 30px;
+                div{
+                    @extend .flex-row;
+                    gap:7px ;
+                    span{
+                        @include textProperty($color:$color-1, $font-size:10px, $font-family:$family-3, $font-weight:500 ,$line-height:16.5px);
+
+                    }
+                    img{
+                        width: 18px;
+                        height: 16px;
+                    }
+                }
+                img{
+                    width: 18px;
+                    height: 16px;
+                }
+
+            }
+        }
+    }
+ }
+
+ header{
+    background-color: #F1F2F3;
+    padding: 32px 0 50px;
+    .row-header{
+        --bs-gutter-x:76px;
+    }
+    .image{
+        width: 100%;
+        height: 500px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .header-content{
+        .trending{
+            @extend .flex-row;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            span{
+                @include textProperty($color:$color-2, $font-size:14px, $font-family:$family-3, $font-weight:600 ,$line-height:29px);
+                letter-spacing: 0.2px;
+
+            }
+            div{
+                @extend .flex-row;
+                gap:20px ;
+            }
+        }
+        h1{
+            margin-bottom:20px ;
+            @include textProperty($color:$color-1, $font-size:32px, $font-family:$family-1, $font-weight:600 ,$line-height:41.6px);
+
+        }
+        p{
+            margin-bottom:20px ;
+            @include textProperty($color:$color-1, $font-size:15px, $font-family:$family-3, $font-weight:400 ,$line-height:24.7px);
+
+        }
+        .info{
+            @extend .flex-row;
+            gap:18px;
+            justify-content: start;
+            margin-bottom: 41px;
+            @include textProperty($color:$color-1, $font-size:13px, $font-family:$family-3, $font-weight:400 ,$line-height:21.45px);
+            .author{
+                opacity: 70%;
+            }
+
+        }
+    }
+
+ }
+
+ footer{
+    background-color:#0E1E32 ;
+    padding: 79px 0 54px 0px;
+    .footer{
+    @extend .flex-row;
+    gap:148px ;
+    .left{
+        @extend .flex-row;
+        gap:188px ;
+        .right-min{
+            @extend .flex-col;
+            gap:14px ;
+            span{
+                @include textProperty($color:#ffffff5d, $font-size:12px, $font-family:$family-3, $font-weight:400 ,$line-height:25px);
+                letter-spacing: 0.2px;
+
+            }
+
+        }
+        .left-min{
+            @extend .flex-col;
+            align-items: start;
+            .term{
+                text-decoration: none;
+                @include textProperty($color:#fff, $font-size:15px, $font-family:$family-3, $font-weight:400 ,$line-height:31px);
+                letter-spacing: 0.2px;
+
+
+            }
+        }
+    }
+    .right{
+        @extend .flex-col;
+        align-items: end;
+        gap: 30px;
+        .nav-footer{
+            @extend .flex-row;
+            justify-content: end;
+            gap:20px ;
+            .footer-item{
+                text-decoration: none;
+                @include textProperty($color:#fff, $font-size:15px, $font-family:$family-3, $font-weight:500 ,$line-height:31px);
+                letter-spacing: 0.2px
+            }
+
+            
+        }
+        .social{
+            @extend .flex-row;
+            justify-content: end;
+            gap:20px ;
+        }
+    }
+    
+    }
+}  
