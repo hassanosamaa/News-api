@@ -14,7 +14,7 @@ export default function Cardhome(props) {
 
   return (
     <>
-    <div className="col-6">
+    <div className="col-md-6">
       <div className="card text-start">
        <Link to={!type?`/health/${title}`:title}>
           <img src={urlToImage ? urlToImage:news}
@@ -30,19 +30,19 @@ export default function Cardhome(props) {
             <span className='author'>By {props.dataapi.author ? props.dataapi.author.split("").slice(0,5).join(""): 'there is no author'} | 4min read</span>
           </div>
 
+
+       </div>
           <div className="reacts">
             <div>
-              <img src={heart} alt="" />
+              <img src={heart} alt="icon" />
               <span>28</span>
             </div>
             <div>
-              <img src={download} alt="" />
+              <img src={download} alt="icon" />
               <span>72</span>
             </div>
-            <img src={save} alt="" />
+            <img src={save} alt="icon" />
           </div>
-
-       </div>
        
       </div>
     </div>

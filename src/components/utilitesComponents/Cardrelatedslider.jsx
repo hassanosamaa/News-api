@@ -22,16 +22,17 @@ export default function Cardrelatedslider(props) {
           </div>
           <div className="dec">
               <h3>{props.x.title}</h3>
+              <p className='d-block d-lg-none'>{props.x.description}</p>
               <div className="reacts">
                 <div>
-                  <img src={heart} alt="" />
+                  <img src={heart} alt="icon" />
                   <span>28</span>
                 </div>
                 <div>
-                  <img src={download} alt="" />
+                  <img src={download} alt="icon" />
                   <span>72</span>
                 </div>
-                <img src={save} alt="" />
+                <img src={save} alt="icon" />
           </div>
           </div>
         </div>

@@ -10,7 +10,6 @@ import tabs from "../../assets/images/tabs.svg"
 import download from "../../assets/images/download.svg"
 import star from "../../assets/images/star.svg"
 import emptyHeartSmall from "../../assets/images/emptyHeartSmall.svg"
-import personLive from "../../assets/images/personLive.jpg"
 
 
 export default function Home() {
@@ -23,14 +22,38 @@ export default function Home() {
      speed:500,
      slidesToShow:2,
      slidesToScroll:1,
+    arrows:false,
     // autoplay:true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1
+        }
+      }
+    ]
    
 
     }
 
     let {type}=useParams()
 
-    let [btn,setBtn]=useState('view more')
+    let [btn,setBtn]=useState('VIEW MORE')
 
     let [data,setData]=useState([])
     let [dataHeader,setDataHeader]=useState([])
@@ -56,12 +79,12 @@ export default function Home() {
    
     function more(){
     
-      if(btn=='view more'){
-        setBtn("view less")
+      if(btn=='VIEW MORE'){
+        setBtn("VIEW LESS")
         setData(dataHeader)
       }
-      else if(btn=='view less'){
-        setBtn("view more")
+      else if(btn=='VIEW LESS'){
+        setBtn("VIEW MORE")
         setData(dataHeader.slice(0,4))
       }
       
@@ -87,30 +110,41 @@ export default function Home() {
     <header>
       <div className="container">
         <div className="row row-header align-items-center">
-          <div className="col-7">
+          <div className="col-lg-7 order-5 order-lg-0">
+
             <div className="image">
-              <img src={dataHeader[1]?.urlToImage} alt="" />
+              <img src={dataHeader[1]?.urlToImage} alt={dataHeader[1]?.title} />
             </div>
+            <div className="dec-head d-block d-lg-none">
+                  <p>{dataHeader[12]?.description}</p>
+                  <div className="info"> 
+                    <span>2 hours ago</span>
+                    <span className='author'>By {dataHeader[2]?.author ? dataHeader[2]?.author.split("").slice(0,5).join(""): 'there is no author'} | 4min read</span>
+              </div>
+              </div>
+
           </div>
-          <div className="col-5">
+          <div className="col-lg-5 order-0 order-lg-5">
             <div className="header-content">
               <div className='trending'>
                 <span>Trending</span>
                 <div className='icons'>
 
-                  <img src={emptyHeartSmall} alt="" />
-                  <img src={download} alt="" />
-                  <img src={save} alt="" />
+                  <img src={emptyHeartSmall} alt="icon" />
+                  <img src={download} alt="icon" />
+                  <img src={save} alt="icon" />
 
                 </div>
 
               </div>
 
               <h1>{dataHeader[12]?.title}</h1>
-              <p>{dataHeader[12]?.description}</p>
-              <div className="info"> 
-                <span>2 hours ago</span>
-                <span className='author'>By {dataHeader[2]?.author ? dataHeader[2]?.author.split("").slice(0,5).join(""): 'there is no author'} | 4min read</span>
+              <div className="dec-head d-none d-lg-block">
+                  <p>{dataHeader[12]?.description}</p>
+                  <div className="info"> 
+                    <span>2 hours ago</span>
+                    <span className='author'>By {dataHeader[2]?.author ? dataHeader[2]?.author.split("").slice(0,5).join(""): 'there is no author'} | 4min read</span>
+              </div>
               </div>
 
             </div>
@@ -129,43 +163,59 @@ export default function Home() {
                       <h4>Kanye West says he's running for president in 2020.</h4>
                   </div>
               </div>
-              <div className="col-8">
+              <div className="col-lg-8 order-4 order-lg-0">
                 <div className="tabs">
                     <div className="btns">
                       <NavLink className='btn' to={`/latest/${type}`} onClick={Latest} >Latest Stories</NavLink>
                       <NavLink className='btn' to={'/health'}>Health</NavLink>
                       <NavLink className='btn ' to={'/sports'}>Sports</NavLink>
                     </div>
-                    <img src={tabs} alt="" />
+                    <img src={tabs} alt="tabs" />
                 </div>
                 <div className="row-left text-center">
                     <div className="row ">
                       {data.map((ele,i)=><Cardhome key={i} dataapi={ele}/>)}
                     </div>
                     <button onClick={more}>{btn}</button>
+
+                    <div className="location-submit d-block d-lg-none text-start">
+                        <span className='location'>Location News</span>
+                        <div className="submit ">
+                          <form>
+                            <label htmlFor="email">Get Location specific News</label>
+                            
+                            <input id="email" type="email" placeholder='Enter Your Location' />
+                            <br></br>
+                            <button type="submit">SUBMIT</button>
+                          </form>
+                        </div>
+                      </div>
                 </div>
 
                 </div>
 
-                <div className="col-4">
+                <div className="col-lg-4 order-0 order-lg-4">
                     <div className="live">
                       <div className="live-icon">
                         <span>Live</span>
-                        <img src={iconLive} alt="" />
+                        <img src={iconLive} alt="liveIcon" />
                       </div>
                       <div className="image">
-                        <img src={dataHeader[2]?.urlToImage} alt="" />
+                        <img src={dataHeader[2]?.urlToImage} alt={dataHeader[2]?.title} />
                       </div>
                       <p>{dataHeader[2]?.title}</p>
-                      <span className='location'>Location News</span>
-                      <div className="submit">
-                        <form>
-                          <label htmlFor="email">Get Location specific News</label>
-                          
-                          <input id="email" type="email" placeholder='Enter Your Location' />
-                          <br></br>
-                          <button type="submit">SUBMIT</button>
-                        </form>
+
+                      <div className="location-submit d-none d-lg-block">
+                        <span className='location'>Location News</span>
+                        <div className="submit ">
+                          <form>
+                            <label htmlFor="email">Get Location specific News</label>
+                            
+                            <input id="email" type="email" placeholder='Enter Your Location' />
+                            <br></br>
+                            <button type="submit">SUBMIT</button>
+                          </form>
+                        </div>
                       </div>
                     </div>
                 </div>
@@ -184,7 +234,7 @@ export default function Home() {
             <div className="col-12">
               <div className="editor-wrap">
                   <h3 className='editor-picks'>Editor’s Picks</h3>
-                  <img src={star} alt="" />
+                  <img src={star} alt="star" />
 
               </div>
             </div>

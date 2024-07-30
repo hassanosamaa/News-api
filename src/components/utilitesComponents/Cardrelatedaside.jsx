@@ -6,13 +6,13 @@ export default function Cardrelatedaside(props) {
   let {type}=useParams()
   return (
     <>
-      <div className="col-12">
+      <div className="col-12 col-md-6 col-lg-12">
         <div className="card-recommended">
         <Link to={`/${type}/${props.x.title}`}>
           <div className="image">
             <img src={props.x.urlToImage ? props.x.urlToImage :news} 
             onError={(i)=>{i.target.src=news}}
-            alt="" />
+            alt="news" />
           </div>
           </Link>
          <div className="para">

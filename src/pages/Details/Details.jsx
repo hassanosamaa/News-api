@@ -8,6 +8,7 @@ import download from "../../assets/images/download.svg";
 import dots from "../../assets/images/dots.svg";
 import save from "../../assets/images/save.svg";
 import emptyHeart from "../../assets/images/emptyHeart.svg";
+import Heart from "../../assets/images/heart.svg";
 import massage from "../../assets/images/massage.svg";
 import x from "../../assets/images/x.svg";
 import email from "../../assets/images/email.svg";
@@ -22,6 +23,31 @@ export default function Details() {
      speed:500,
      slidesToShow:5,
      slidesToScroll:1,
+    arrows:false,
+    rtl: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1
+        }
+      }
+    ]
    
 
     }
@@ -50,7 +76,7 @@ export default function Details() {
         <div className="title">
           <div className="container">
             <div className="row  justify-content-center">
-              <div className="col-8">
+              <div className="col-lg-8">
                   <h1>{dataapi[0]?.title}</h1>
               </div>
             </div>
@@ -59,26 +85,44 @@ export default function Details() {
 
         <article>
           <div className="container">
-            <div className="row   align-items-center">
-              <div className="col-1  ">
+            <div className="row   align-items-start">
+              <div className="col-1 d-none d-lg-block  ">
                   <div className="side-left">
-                     <span>
+                     <span className='see-more text-center'>
                           See more like this?
                      </span>
+                     <div className="circle">
+                        <span className='green'></span>
+                        <div></div>
+                        <span className='orange'></span>
+                     </div>
+                     <div className="reacts-side">
+                          <div className="heart-side">
+                            <img src={Heart} alt="icon" />
+                            <span>28</span>
+                          </div>
+                          <div className="massage-side">
+                            <img src={massage} alt="icon" />
+                            <span>21</span>
+                          </div>
+                          <img src={download} alt="icon" />
+                          <img src={save} alt="icon" />
+
+                     </div>
                   </div>
               </div>
-              <div className="col-10  ">
+              <div className="col-lg-10  ">
                 <div className="content-main">
 
                   <div className="imag">
                     <img src={dataapi[0]?.urlToImage?dataapi[0]?.urlToImage:news}
-                    onError={(i)=>{i.target.src=news}} alt="" />
+                    onError={(i)=>{i.target.src=news}} alt="news" />
                  
                   </div>
 
                   <div className="body-content">
                     <div className="row row--content ">
-                      <div className="col-9">
+                      <div className="col-lg-9">
                           <div className="content text-start">
                               <div className="info">
                                   <span>12 hours ago</span>
@@ -119,7 +163,7 @@ seem true, sometimes, when a dog bites a man that can also become news.
                                       <Link className='Link'>Take a look</Link>
                                       </span></p>
                                     <button>
-                                      <img src={email} alt="" />
+                                      <img src={email} alt="email" />
                                       Get this Newsletter
                                     </button>
                                   </div>
@@ -130,28 +174,28 @@ seem true, sometimes, when a dog bites a man that can also become news.
                                       <button>Lewis</button>
                                       <button>Freebie</button>
                                     </div>
-                                    <div className="react">
+                                    <div className="react d-none d-lg-flex">
                                       <div className="left-part">
                                           <div>
-                                              <img src={emptyHeart} alt="" />
+                                              <img src={emptyHeart} alt="heart" />
                                               <span>28</span>
                                             </div>
                                             <div>
-                                              <img src={massage} alt="" />
+                                              <img src={massage} alt="massage" />
                                               <span>21 responses</span>
                                             </div>
                                       </div>
 
                                       <div className="right-part">
                                           <div>
-                                              <img src={download} alt="" />
+                                              <img src={download} alt="icon" />
                                               <span>72</span>
                                             </div>
                                             <div>
-                                              <img src={save} alt="" />
+                                              <img src={save} alt="icon" />
                                             </div>
                                             <div>
-                                              <img src={dots} alt="" />
+                                              <img src={dots} alt="icon" />
                                             </div>
 
                                       </div>
@@ -161,27 +205,28 @@ seem true, sometimes, when a dog bites a man that can also become news.
                                     <div className="author-card">
                                         <div className="left-part">
                                           <div className="image">
-                                            <img src={author} alt="" />
+                                            <img src={author} alt="author" />
                                           </div>
                                           <div className="content-dec">
                                             <h3>Author</h3>
                                             <h2>Caroline Casey</h2>
-                                            <p>Caroline Casey is an award-winning social activist and founder of <span>The Valuable 500,</span> a global movement aimed at getting 500 companies to commit to disability inclusion. </p>
+                                            <p className='d-none d-lg-block'>Caroline Casey is an award-winning social activist and founder of <span>The Valuable 500,</span> a global movement aimed at getting 500 companies to commit to disability inclusion. </p>
                                           </div>
                                         </div>
                                         <div className="right-part">
                                           <button>
-                                            <img src={x} alt="" />
+                                            <img src={x} alt="twiter" />
                                             <span>Follow</span>
                                           </button>
                                         </div>
                                     </div>
-                                    
+                                    <p className=' p-spial d-block d-lg-none'>Caroline Casey is an award-winning social activist and founder of <span>The Valuable 500,</span> a global movement aimed at getting 500 companies to commit to disability inclusion. </p>
+
                                   </div>
                               </div>
                           </div>
                       </div>
-                      <div className="col-3 ">
+                      <div className="col-lg-3 ">
                           <h3 className='recommended'>Recommended for you</h3>
                         <div className="row row--recom">
                           {dataRelated.slice(10,12).map((ele)=><Cardrelatedaside key={ele.title} x={ele}/>)}
@@ -206,6 +251,7 @@ seem true, sometimes, when a dog bites a man that can also become news.
       <section className="related-slider">
         <div className="container">
           <div className="row">
+            <h2 className='topics'>Related Topics</h2>
           <Slider {...settings}>
 
                    {dataRelated.map((ele)=><Cardrelatedslider key={ele.title} x={ele}/>)}

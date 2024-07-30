@@ -13,13 +13,13 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="footer">
-               <div className="left">
+              <div className="footer d-flex flex-column flex-lg-row">
+               <div className="left d-flex flex-column flex-lg-row">
                   <div className="right-min">
-                        <img src={logoFooter} alt="" />
+                        <img src={logoFooter} alt="icon" />
                         <span>copyright 2020 | NBC NEWS</span>
                     </div>
-                    <div className="left-min">
+                    <div className="left-min ">
                         <Link className="term">Privacy Policy</Link>
                         <Link className="term">Do not sell my personal info</Link>
                         <Link className="term">Terms of Service</Link>
@@ -34,10 +34,10 @@ export default function Footer() {
                       <Link className='footer-item'>Coupons</Link>
                     </div>
                     <div className="social">
-                      <img src={wifi} alt="" />
-                      <img src={x} alt="" />
-                      <img src={s3} alt="" />
-                      <img src={facebook} alt="" />
+                      <img src={wifi} alt="icon" />
+                      <img src={x} alt="icon" />
+                      <img src={s3} alt="icon" />
+                      <img src={facebook} alt="icon" />
                     </div>
                 </div>
               </div>
