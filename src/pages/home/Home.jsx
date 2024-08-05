@@ -4,18 +4,31 @@ import axios from "axios";
 import Cardhome from '../../components/utilitesComponents/Cardhome'
 import Cardsliderhome from '../../components/utilitesComponents/Cardsliderhome'
 import Slider from "react-slick"
-import save from "../../assets/images/save.svg"
+import saveEmpty from "../../assets/images/save.svg"
+import saveFill from "../../assets/images/saveFill.svg"
 import iconLive from "../../assets/images/icon-live.svg"
 import tabs from "../../assets/images/tabs.svg"
 import download from "../../assets/images/download.svg"
 import star from "../../assets/images/star.svg"
 import emptyHeartSmall from "../../assets/images/emptyHeartSmall.svg"
+import heart from "../../assets/images/heart.svg"
 
 
 export default function Home() {
 
+    let[icon,setIcon]=useState(true)
 
-  // {dataHeader[2]?.author.split(" ").length>3 ? dataHeader[2]?.author.split(" ").slice(0,2).join(" "):dataHeader[2]?.author}
+    function change(){
+      setIcon(!icon)
+    }
+
+    let[iconSave,setIconSave]=useState(true)
+
+    function changeSave(){
+    setIconSave(!iconSave)
+    }
+
+
   var settings={
      dots:true,
      infinite:true,
@@ -130,9 +143,9 @@ export default function Home() {
                 <span>Trending</span>
                 <div className='icons'>
 
-                  <img src={emptyHeartSmall} alt="icon" />
+                  <img onClick={change} src={icon ? emptyHeartSmall : heart} alt="icon" />
                   <img src={download} alt="icon" />
-                  <img src={save} alt="icon" />
+                  <img  onClick={changeSave} src={iconSave ? saveEmpty : saveFill} alt="icon" />
 
                 </div>
 

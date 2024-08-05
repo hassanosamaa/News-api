@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import heart from "../../assets/images/heart.svg";
+import heartEmpty from "../../assets/images/emptyHeartSmall.svg";
 import download from "../../assets/images/download.svg";
-import save from "../../assets/images/save.svg";
+import saveEmpty from "../../assets/images/save.svg";
+import saveFill from "../../assets/images/saveFill.svg";
 import news from "../../assets/images/news.jpg";
 
 export default function Cardhome(props) {
  
  const {title,urlToImage,description}=props.dataapi;
  let{type}=useParams(null)
+ let[iconHeart,setIconHeart]=useState(true)
 
-  
+  function changeHeart(){
+    setIconHeart(!iconHeart)
+  }
+
+  let[iconSave,setIconSave]=useState(true)
+
+  function changeSave(){
+    setIconSave(!iconSave)
+  }
 
   return (
     <>
@@ -34,14 +45,14 @@ export default function Cardhome(props) {
        </div>
           <div className="reacts">
             <div>
-              <img src={heart} alt="icon" />
+              <img onClick={changeHeart} src={iconHeart ? heartEmpty : heart} alt="icon" />
               <span>28</span>
             </div>
             <div>
-              <img src={download} alt="icon" />
+              <img src={download}  alt="icon" />
               <span>72</span>
             </div>
-            <img src={save} alt="icon" />
+            <img  onClick={changeSave} src={iconSave ? saveEmpty : saveFill} alt="icon" />
           </div>
        
       </div>

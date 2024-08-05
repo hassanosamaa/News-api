@@ -4,19 +4,20 @@ import { Link, useParams } from 'react-router-dom'
 
 export default function Cardrelatedaside(props) {
   let {type}=useParams()
+  let{title,urlToImage}=props.x
   return (
     <>
       <div className="col-12 col-md-6 col-lg-12">
         <div className="card-recommended">
-        <Link to={`/${type}/${props.x.title}`}>
+        <Link to={`/${type}/${title}`}>
           <div className="image">
-            <img src={props.x.urlToImage ? props.x.urlToImage :news} 
+            <img src={urlToImage ? urlToImage :news} 
             onError={(i)=>{i.target.src=news}}
             alt="news" />
           </div>
           </Link>
          <div className="para">
-            <p>{props.x.title}</p>
+            <p>{title}</p>
          </div>
         </div>
       </div>

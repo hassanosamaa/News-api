@@ -7,14 +7,27 @@ import Slider from 'react-slick';
 import download from "../../assets/images/download.svg";
 import dots from "../../assets/images/dots.svg";
 import save from "../../assets/images/save.svg";
-import emptyHeart from "../../assets/images/emptyHeart.svg";
+import heartEmptybig from "../../assets/images/emptyHeart.svg";
+import heartbig from "../../assets/images/Heartbig.svg";
 import Heart from "../../assets/images/heart.svg";
+import heartEmpty from "../../assets/images/emptyHeartSmall.svg";
 import massage from "../../assets/images/massage.svg";
 import x from "../../assets/images/x.svg";
 import email from "../../assets/images/email.svg";
 import author from "../../assets/images/author.png";
 import news from "../../assets/images/news.jpg";
 export default function Details() {
+
+  let[icon,setIcon]=useState(true)
+
+  function change(){
+    setIcon(!icon)
+  }
+  let[iconbig,setIconbig]=useState(true)
+
+  function changebig(){
+    setIconbig(!iconbig)
+  }
 
 
   var settings={
@@ -98,7 +111,7 @@ export default function Details() {
                      </div>
                      <div className="reacts-side">
                           <div className="heart-side">
-                            <img src={Heart} alt="icon" />
+                            <img  onClick={change} src={icon ? heartEmpty : Heart} alt="icon" />
                             <span>28</span>
                           </div>
                           <div className="massage-side">
@@ -177,7 +190,7 @@ seem true, sometimes, when a dog bites a man that can also become news.
                                     <div className="react d-none d-lg-flex">
                                       <div className="left-part">
                                           <div>
-                                              <img src={emptyHeart} alt="heart" />
+                                              <img onClick={changebig} src={iconbig ? heartEmptybig : heartbig} alt="heart" />
                                               <span>28</span>
                                             </div>
                                             <div>
